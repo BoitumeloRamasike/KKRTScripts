@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+#in etc/host file, add storage and scratch as pat of the headnodes hostnames
 
 set -e
 
@@ -39,6 +40,7 @@ firewall-cmd --reload
 #List all the services active:
 firewall-cmd --permanent --list-all | grep services
 
+#private ip address of headnode
 cat > /etc/exports <<-eof
 /home 10.2.0.100/24(async,rw,no_root_squash,no_subtree_check)
 /data/soft 10.2.0.100/24(async,rw,no_root_squash,no_subtree_check)
